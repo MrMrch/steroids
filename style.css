@@ -50,3 +50,7 @@ canvas {
     border: 2px solid #fff;  /* Set a thicker border to make it more visible */
     z-index: 0;  /* Ensure it doesn't overlay other elements */
 }
+
+#toggleAudio {
+    margin-bottom: 10px;  /* Adjust this value according to your needs */
+}
