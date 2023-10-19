@@ -33,18 +33,22 @@
         padding: 20px;
         border-radius: 10px;
         display: none; /* Initially hidden */
-      }
+      }w
     </style>
   </head>
 
   <body>
     <!-- Background Music -->
-    <audio src="siddarta.wav" muted></audio>
-    <audio id="laserGunSound" src="lasergun.wav" preload="auto"></audio>
-    <audio id="explosionSound" src="explosion.wav" preload="auto"></audio>
-    <audio id="deathSound" src="deathSound.wav" preload="auto"></audio>
-    <audio id="powerUpSound" src="powerUp.mp3" preload="auto"></audio>
-    <audio id="reload" src="reload.wav" preload="auto"></audio>
+    <audio src="sounds/wandering.mp3" muted></audio>
+    <audio id="laserGunSound" src="sounds/lasergun.wav" preload="auto"></audio>
+    <audio
+      id="explosionSound"
+      src="sounds/explosion.wav"
+      preload="auto"
+    ></audio>
+    <audio id="deathSound" src="sounds/deathSound.wav" preload="auto"></audio>
+    <audio id="powerUpSound" src="sounds/powerUp.mp3" preload="auto"></audio>
+    <audio id="reload" src="sounds/reload.wav" preload="auto"></audio>
 
     <!-- Homepage section -->
     <div id="homepage">
@@ -82,9 +86,9 @@
     </div>
 
     <!-- JS files -->
-    <script src="homepage.js"></script>
-    <script src="gameEngine.js"></script>
-    <script src="userInterface.js"></script>
-    <script src="collisions.js"></script>
+    <script src="js/homepage.js"></script>
+    <script src="js/gameEngine.js"></script>
+    <script src="js/userInterface.js"></script>
+    <script src="js/collisions.js"></script>
   </body>
 </html>
