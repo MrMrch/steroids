@@ -1,3 +1,5 @@
+let isGameRunning = false;
+
 var canvas;
 var canvasContext;
 var player = { x: 50, y: 300, speed: 10, size: 40 };
@@ -101,10 +103,8 @@ window.onload = function() {
     let imagesLoaded = 0;
     boxImage.onload = playerImage.onload = powerUpImage.onload = function() {
         imagesLoaded++;
-        if(imagesLoaded === 3) {  // Ensure all three images are loaded
-            startGame();
-        }
     }
+    
 }
 
 
@@ -119,15 +119,17 @@ function startGame() {
 
 
 function updateGame() {
-    console.log("Updating game...");  // Debugging line
+    if (!isGameRunning) return;
 
-    movePlayer();
-    movePowerUps();  // Make sure to call this function
+        console.log("Updating game...");  // Debugging line
 
-    moveBoxes();
-    moveBullets();
-    checkCollisions();
-    drawEverything();
+        movePlayer();
+        movePowerUps();  // Make sure to call this function
+
+        moveBoxes();
+        moveBullets();
+        checkCollisions();
+        drawEverything();
 }
 
 
@@ -360,6 +362,8 @@ function generateBox() {
 
 
 function checkCollisions() {
+        // Check for collision between player and asteroids
+
     for(let box of boxes) {
         if(player.x < box.x + box.size &&
            player.x + player.size > box.x &&
@@ -367,7 +371,7 @@ function checkCollisions() {
            player.y + player.size > box.y) {
             clearInterval(gameInterval);
             clearInterval(boxInterval);
-            alert('GAME OVER\nScore: ' + score);
+            endGame();
         }
     }
 
@@ -395,6 +399,16 @@ function checkCollisions() {
         }
     }
 }
+
+function endGame() {
+    clearInterval(gameInterval);
+    clearInterval(boxInterval);
+    isGameRunning = false;
+    gameStarted = false;
+    document.getElementById('finalScore').textContent = score;
+    document.getElementById('gameOverPopup').style.display = "block";
+}
+
 
 function generatePowerUp() {
     var powerUpSize = player.size / 2;
@@ -444,3 +458,18 @@ function moveBullets() {
     bullets = bullets.filter(bullet => bullet.x < canvas.width);
 }
 
+ 
+
+const restartBtn = document.getElementById('restartGame');
+
+restartBtn.addEventListener('click', function() {
+    // Hide game over popup
+    document.getElementById('gameOverPopup').style.display = "none";
+
+    // Reset game variables if needed (e.g. score, player position, etc.)
+    // ... reset logic ...
+
+    // Start the game
+    isGameRunning = true;
+    startGame();
+});

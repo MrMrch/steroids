@@ -5,8 +5,48 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #000;
+    border: white;
 }
 
+#homepage {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    overflow: hidden;
+    border: white;
+
+}
+
+#gameCutout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 800px;
+    height: 600px;
+    z-index: 1;
+}
+
+#gameTitle {
+    position: absolute;
+    width: 800px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    transition: transform 0.3s ease-in-out;
+    animation: floatAnimation 1.3s infinite alternate;
+}
+
+@keyframes floatAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(0.99);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.04);
+    }
+}
 canvas {
-    border: 1px solid #fff;
+    border: 2px solid #fff;  /* Set a thicker border to make it more visible */
+    z-index: 0;  /* Ensure it doesn't overlay other elements */
 }
